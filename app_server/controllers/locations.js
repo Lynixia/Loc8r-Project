@@ -3,14 +3,10 @@ var apiOptions = { //option determined by environment
   server : "http://localhost:3000"
 };
 if(process.env.NODE_ENV === 'production') {
-apiOptions.server = 
-"http://cis295.azurewebsites.net";
+  apiOptions.server = 
+'http://loc8r-project.azurewebsites.net'
+
 }
-
-
-
-
-
 //takes distance in meters
 var _formatDistance = function (distance) {
   var numDistance, unit;
