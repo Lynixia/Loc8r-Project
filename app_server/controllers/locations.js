@@ -4,7 +4,7 @@ var apiOptions = { //option determined by environment
 };
 if (process.env.NODE_ENV === 'development') {
   apiOptions.server = 
-"http://loc8r-final.azurewebsites.net/";
+"http://loc8r-finale.azurewebsites.net";
 
 }
 //takes distance in meters
