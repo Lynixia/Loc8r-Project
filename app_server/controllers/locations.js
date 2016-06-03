@@ -2,9 +2,8 @@ var request = require('request');
 var apiOptions = { //option determined by environment
   server : "http://localhost:3000"
 };
-if (process.env.NODE_ENV === 'development') {
-  apiOptions.server = 
-"http://loc8r-finale.azurewebsites.net";
+if (process.env.NODE_ENV === 'stuff') {
+  apiOptions.server = "http://loc8r-final.azurewebsites.net";
 
 }
 //takes distance in meters
