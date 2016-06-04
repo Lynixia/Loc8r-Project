@@ -2,7 +2,7 @@ var request = require('request');
 var apiOptions = { //option determined by environment
   server : "http://localhost:3000"
 };
-if (process.env.NODE_ENV === 'stuff') {
+if (process.env.NODE_ENV === 'production') {
   apiOptions.server = "http://loc8r-1.azurewebsites.net/";
 
 }
