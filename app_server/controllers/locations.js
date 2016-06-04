@@ -6,7 +6,10 @@ if (process.env.NODE_ENV === 'stuff') {
   apiOptions.server = "http://loc8r-final.azurewebsites.net";
 
 }
-//takes distance in meters
+var  _isNumeric = function(n){
+  return !isNAN(parseFloat(n)) && isFinit(n);
+};
+
 var _formatDistance = function (distance) {
   var numDistance, unit;
   numDistance = parseFloat(distance) * 1.0936133;
@@ -18,8 +21,7 @@ var _formatDistance = function (distance) {
     unit = ' yd';
   }
   return numDistance + unit;
-};
-
+} 
 
 //generic error response
 var _showError = function (req, res, status) {
@@ -66,7 +68,7 @@ var getLocationInfo = function (req, res, callback) {
 };
 
 
-
+//Render Homepage for the homelist function (exported)
 var renderHomepage = function(req, res, responseBody){
   var message;
   if (!(responseBody instanceof Array)) {
@@ -98,7 +100,10 @@ module.exports.homelist = function(req, res){
     method : "GET",
     json : {},
     qs : {
-      
+      // lng : -123.28782914711235,
+      // lat : 44.54512094444831,
+      // lng : -123.263129,
+      // lat : 44.558420,
       lng : -123.266124,
       lat : 44.562743,
       maxDistance : 5000
@@ -142,11 +147,12 @@ module.exports.locationInfo = function(req, res){
 // Render Review Form for addReview page (exported)
 var renderReviewForm = function (req, res, locDetail) {
   res.render('location-review-form', {
-    title: 'Review ' + locDetail.name + ' on Loc8r',
-    pageHeader: { title: 'Review ' + locDetail.name },
-    error: req.query.err
+    title: 'Review ' + locDetail.name + 'on Loc8r',
+    pageHeader: { title: 'Reveiw' + locDetail.name},
+    error:req.query.err
   });
 };
+
 
 // GET 'Add review' page
 module.exports.addReview = function(req, res){
@@ -181,6 +187,7 @@ module.exports.doAddReview = function(req, res){
         } else if (response.statusCode === 400 && body.name && body.name === "ValidationError" ) {
           res.redirect('/location/' + locationid + '/reviews/new?err=val');
         } else {
+          console.log(body);
           _showError(req, res, response.statusCode);
         }
       }
