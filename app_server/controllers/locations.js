@@ -106,7 +106,7 @@ module.exports.homelist = function(req, res){
       // lat : 44.558420,
       lng : -123.266124,
       lat : 44.562743,
-      maxDistance : 5000
+      maxDistance : 50000
     }
   };
   request(
